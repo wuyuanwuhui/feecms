@@ -1,7 +1,6 @@
 <?php
 return [
     'id' => 'app-backend-tests',
-    'language' => 'zh-CN',
     'components' => [
         'assetManager' => [
             'basePath' => '@admin/assets',

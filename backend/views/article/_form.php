@@ -43,6 +43,10 @@ $this->title = "Articles";
                         <?= $form->field($model, 'sub_title')->textInput(); ?>
                         <?= $form->field($model, 'summary')->textArea(); ?>
                         <?= $form->field($model, 'thumb')->imgInput(['style' => 'max-width:200px;max-height:200px']); ?>
+                        <?= $form->field($model, 'game_icon')->imgInput(['style' => 'max-width:200px;max-height:200px']); ?>
+                        <?= $form->field($model, 'game_version')->textInput(); ?>
+                        <?= $form->field($model, 'game_size')->textInput(); ?>
+                        <?= $form->field($model, 'down_counts')->textInput(); ?>
                         <?= $form->field($model, 'images')->widget(Webuploader::className()); ?>
                         <?= $form->field($contentModel, 'content')->widget(Ueditor::className()) ?>
                     </div>

@@ -105,6 +105,10 @@ return [
     'Summary' => '概述',
     'Content' => '正文内容',
     'Thumb' => '缩略图',
+    'Game Icon' => '游戏图标',
+    'Game Version' => '游戏版本',
+    'Game Size' => '游戏大小',
+    'Down Counts' => '下载次数',
     'Seo Title' => 'seo标题',
     'Seo Keyword' => 'seo关键字',
     'Seo Description' => 'seo描述',
@@ -133,9 +137,20 @@ return [
     'Allowed not to be deleted, some article belongs to this category.' => '不允许被删除，还有文章属于此分类',
     'Secret article must set a password' => '加密文章必须设置密码',
     'Article Id' => '文章Id',
-    'Article Images' => '文章配图',
+    'Article Images' => '文章组图',
     'Choose Image Multi' => '选择多图',
     "Page Sign" => "单页地址",
+
+    'List Game' => '游戏列表页',
+    'List News' => '新闻列表页',
+    'Article Game' => '游戏详情页',
+    'Article News' => '新闻详情页',
+
+    'About' => '关于',
+    'Contact' => '联系我们',
+    'Name En' => '英文名',
+
+
     /*Article*/
 
     /*Comment*/

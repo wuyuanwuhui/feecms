@@ -227,7 +227,7 @@ $this->registerCss("
                         foreach ($comments as $comment) {
                             ?>
                             <div class="feed-element">
-                                <a class="pull-left"><img alt="image" class="img-circle" src="https://secure.gravatar.com/avatar/<?= md5($comment->email) ?>?s=50"></a>
+                                <a class="pull-left"><img alt="image" class="img-circle" src="<?= md5($comment->email) ?>?s=50"></a>
                                 <div class="media-body ">
                                     <small class="pull-right"><?= Yii::$app->getFormatter()->asRelativeTime($comment->created_at) ?></small>
                                     <strong><?= $comment->nickname ?></strong>

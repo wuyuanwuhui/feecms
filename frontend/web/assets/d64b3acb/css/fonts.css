@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'FuturaMdBTMedium';
+    src: url('../fonts/futura_medium_bt-webfont.eot');
+    src: url('../fonts/futura_medium_bt-webfont.eot?#iefix') format('embedded-opentype'),
+         url(' ../fonts/futura_medium_bt-webfont.woff') format('woff'),
+         url('../fonts/futura_medium_bt-webfont.svg#FuturaMdBTMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+        /*  url('../fonts/futura_medium_bt-webfont.woff') format('woff'), */
+@font-face {
+    font-family: 'FuturaBold';
+    src: url('../fonts/futurabt-bold-webfont.eot');
+    src: url('../fonts/futurabt-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/futurabt-bold-webfont.woff') format('woff'),
+         url('../fonts/futurabt-bold-webfont.ttf') format('truetype'),
+         url('../fonts/futurabt-bold-webfont.svg#FuturaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'PingFang SC UitraLight';
+    src:  url('../fonts/pingfang UitraLight.ttf');
+    src:  url('../fonts/pingfang UitraLight.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PingFang SC Thin';
+    src:  url('../fonts/pingfang Thin.ttf');
+    src:  url('../fonts/pingfang Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PingFang SC Light';
+    src:  url('../fonts/pingfang Light.ttf');
+    src:  url('../fonts/pingfang Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} */
+@font-face {
+    font-family: 'PingFang SC Regular';
+    src:  url('../fonts/PingFang SC Regular.ttf');
+    src:  url('../fonts/PingFang SC Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'PingFang SC Medium';
+    src:  url('../fonts/pingfang Medium.ttf');
+    src:  url('../fonts/pingfang Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} */
+ @font-face {
+    font-family: 'PingFang SC Bold';
+   src:  url('../fonts/pingfang Bold.ttf'); 
+    src:  url('../fonts/pingfang Bold.ttf') format('truetype');      
+    font-weight: normal;
+    font-style: normal; 
+} 
+

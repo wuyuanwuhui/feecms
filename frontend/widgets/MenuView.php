@@ -10,18 +10,18 @@ namespace frontend\widgets;
 
 
 use yii;
+use yii\helpers\StringHelper;
 use common\models\Menu;
 
 class MenuView extends \yii\base\Widget
 {
 
-    public $template = "<ul class=\"down-menu nav-menu\">{lis}</ul>";
+    public $template = "<ul>{lis}</ul>";
 
-    public $liTemplate = "<li id='menu-item-{menu_id}' class='menu-item menu-item-type-taxonomy menu-item-object-category {current_menu_class} menu-item-{menu_id}'><a href='{url}' target='{target}' style='padding: 13px;'>{title}</a>{sub_menu}</li>";
-
-    public $subTemplate = "<ul class=\"sub-menu\" style=\"padding-top: 20px;\">{lis}</ul>";
-
-    public $subLitemplate = "<li id=\"menu-item-{menu_id}\" class=\"menu-item menu-item-type-taxonomy menu-item-object-category {current_menu_class} menu-item-{menu_id}\"><a href=\"{url}\" target='{target}' style=\"padding: 13px;\">{title}</a></li>";
+    public $liTemplate = "
+<li id='menu-item-{menu_id}'>
+    <a href='{url}' class='{current_menu_class}' target='{target}'>{title}</a>
+</li>";
 
 
     /**
@@ -42,25 +42,30 @@ class MenuView extends \yii\base\Widget
             /** @var $menu Menu */
             if ($menu->parent_id == 0) {
                 $url = $menu->getMenuUrl();
+                $urlComponents = json_decode($menu->url, true);
                 $currentMenuClass = '';
-                if ($url == yii::$app->getRequest()->getUrl()) {
-                    $currentMenuClass = ' current-menu-item ';
+                $parent = Yii::$app->request->get('parent');
+                if (!empty($urlComponents['cat'])) {
+                    $currentMenuClass = ($urlComponents['cat'] == $parent) ? 'active' : '';
                 }
-                $submenu = $this->getSubMenu($menus, $menu->id);
+                if (StringHelper::endsWith($url, 'index') == true && yii::$app->getRequest()->getUrl() == '/') {
+                    $currentMenuClass = 'active';
+                }
+                if ($url == yii::$app->getRequest()->getUrl()) {
+                    $currentMenuClass = 'active';
+                }
                 $content .= str_replace([
                     '{menu_id}',
                     '{current_menu_class}',
                     '{url}',
                     '{target}',
-                    '{title}',
-                    '{sub_menu}'
+                    '{title}'
                 ], [
                     $menu->id,
                     $currentMenuClass,
                     $url,
                     $menu->target,
                     $menu->name,
-                    $submenu
                 ], $this->liTemplate);
             }
         }

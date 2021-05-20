@@ -1,0 +1,121 @@
+Message-ID: <c85c28abad226256cff4207c8bc50f6a@local.feehi.com>
+Date: Tue, 18 May 2021 10:59:49 +0800
+Subject: =?UTF-8?Q?=E6=9D=A5=E8=87=AA?= Feehi CMS
+ =?UTF-8?Q?=E5=90=8E=E5=8F=B0=E7=9A=84=E6=96=B0?=
+ =?UTF-8?Q?=E6=97=A5=E5=BF=97=E6=B6=88=E6=81=AF?=
+From: Feehi CMS robot  <admin@feehi.com>
+To: admin@feehi.com, liufee@126.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+2021-05-18 10:59:49
+[10.0.2.2][1][h03lhq0vlgncfp6r68amcd48sh][error][yii\web\HttpException:422]
+yii\web\UnprocessableEntityHttpException:
+=E4=B8=8D=E5=85=81=E8=AE=B8=E8=A2=AB=E5=88=A0=E9=99=A4=EF=BC=8C=
+=E8=BF=98=E6=9C=89=E6=96=87=E7=AB=A0=E5=B1=9E=E4=BA=8E=E6=AD=A4=E5=88=86=
+=E7=B1=BB in
+/vagrant/www/feehi/backend/actions/DeleteAction.php:89
+Stack trace:
+#0 [internal function]: backend\actions\DeleteAction->run()
+#1 /vagrant/www/feehi/vendor/yiisoft/yii2/base/Action.php(94):
+call_user_func_array(Array, Array)
+#2 /vagrant/www/feehi/vendor/yiisoft/yii2/base/Controller.php(157):
+yii\base\Action->runWithParams(Array)
+#3 /vagrant/www/feehi/vendor/yiisoft/yii2/base/Module.php(528):
+yii\base\Controller->runAction('delete', Array)
+#4 /vagrant/www/feehi/vendor/yiisoft/yii2/web/Application.php(103):
+yii\base\Module->runAction('category/delete', Array)
+#5 /vagrant/www/feehi/vendor/yiisoft/yii2/base/Application.php(386):
+yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 /vagrant/www/feehi/frontend/web/admin/index.php(18):
+yii\base\Application->run()
+#7 {main}
+2021-05-18 10:59:48
+[10.0.2.2][1][h03lhq0vlgncfp6r68amcd48sh][info][application] $_GET =3D [
+    'r' =3D> 'category/delete'
+    'id' =3D> '2'
+]
+
+$_POST =3D [
+    'id' =3D> '2'
+]
+
+$_FILES =3D []
+
+$_COOKIE =3D [
+    'PHPSESSID' =3D> 'esmo5ridtfhgidis8t1o694rf9'
+    '_csrf' =3D>
+'da4d92628e85bf96cf312b7d17125d15a728ee67013bc9fd2b5df4c6ed9fc56ba:2:{i:0;=
+s:5:\"_csrf\";i:1;s:32:\"LkloJW5FSKh2aqX_NHU_zasX6cYU67ug\";}'
+    'BACKEND_FEEHICMS' =3D> 'h03lhq0vlgncfp6r68amcd48sh'
+    '_csrf_backend' =3D>
+'237bcda8726fc97063405e7d35870329ed8c06429e8a394cc5ba673c9cbd1dd0a:2:{i:0;s=
+:13:\"_csrf_backend\";i:1;s:32:\"ReDNzvBwP0bfVtWlGcogcUWSI42R6Hya\";}'
+]
+
+$_SESSION =3D [
+    '__flash' =3D> []
+    '_backend_returnUrl' =3D> '/admin/'
+    '__captcha/site/captcha' =3D> 'yuyk'
+    '__captcha/site/captchacount' =3D> 1
+    '__backend__id' =3D> 1
+    '_update_referer' =3D>
+'http://local.feehi.com:8080/admin/index.php?r=3Dcategory%2Findex'
+]
+
+$_SERVER =3D [
+    'USER' =3D> 'apache'
+    'HOME' =3D> '/usr/share/httpd'
+    'HTTP_COOKIE' =3D> 'PHPSESSID=3Desmo5ridtfhgidis8t1o694rf9;
+_csrf=3Dda4d92628e85bf96cf312b7d17125d15a728ee67013bc9fd2b5df4c6ed9fc56ba%3=
+A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22LkloJW5FSKh2aq=
+X_NHU_zasX6cYU67ug%22%3B%7D;
+BACKEND_FEEHICMS=3Dh03lhq0vlgncfp6r68amcd48sh;
+_csrf_backend=3D237bcda8726fc97063405e7d35870329ed8c06429e8a394cc5ba673c=
+9cbd1dd0a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf_backend%22%3Bi%3A1%3Bs%3A32=
+%3A%22ReDNzvBwP0bfVtWlGcogcUWSI42R6Hya%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' =3D> 'zh-CN,zh;q=3D0.9'
+    'HTTP_ACCEPT_ENCODING' =3D> 'gzip, deflate'
+    'HTTP_REFERER' =3D>
+'http://local.feehi.com:8080/admin/index.php?r=3Dcategory%2Findex'
+    'HTTP_ORIGIN' =3D> 'http://local.feehi.com:8080'
+    'HTTP_CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded;
+charset=3DUTF-8'
+    'HTTP_USER_AGENT' =3D> 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212
+Safari/537.36'
+    'HTTP_X_REQUESTED_WITH' =3D> 'XMLHttpRequest'
+    'HTTP_X_CSRF_TOKEN' =3D>
+'6MYBSX6DFaTo3Z7x9f6wC-AF5BOH37vPzxaX4_MuvJ66o0UHBPVX07jt_Jejiudnp2aLdOSK7J=
+yGIqWxxWbF_w=3D=3D'
+    'HTTP_ACCEPT' =3D> 'application/json, text/javascript, */*; q=3D0.01'
+    'HTTP_CONTENT_LENGTH' =3D> '4'
+    'HTTP_CONNECTION' =3D> 'keep-alive'
+    'HTTP_HOST' =3D> 'local.feehi.com:8080'
+    'SCRIPT_FILENAME' =3D>
+'/vagrant/www/feehi/frontend/web/admin/index.php'
+    'REDIRECT_STATUS' =3D> '200'
+    'SERVER_NAME' =3D> 'local.feehi.com'
+    'SERVER_PORT' =3D> '80'
+    'SERVER_ADDR' =3D> '10.0.2.15'
+    'REMOTE_PORT' =3D> '54606'
+    'REMOTE_ADDR' =3D> '10.0.2.2'
+    'SERVER_SOFTWARE' =3D> 'nginx/1.20.0'
+    'GATEWAY_INTERFACE' =3D> 'CGI/1.1'
+    'REQUEST_SCHEME' =3D> 'http'
+    'SERVER_PROTOCOL' =3D> 'HTTP/1.1'
+    'DOCUMENT_ROOT' =3D> '/vagrant/www/feehi/frontend/web'
+    'DOCUMENT_URI' =3D> '/admin/index.php'
+    'REQUEST_URI' =3D> '/admin/index.php?r=3Dcategory%2Fdelete&id=3D2'
+    'SCRIPT_NAME' =3D> '/admin/index.php'
+    'CONTENT_LENGTH' =3D> '4'
+    'CONTENT_TYPE' =3D> 'application/x-www-form-urlencoded;
+charset=3DUTF-8'
+    'REQUEST_METHOD' =3D> 'POST'
+    'QUERY_STRING' =3D> 'r=3Dcategory%2Fdelete&id=3D2'
+    'FCGI_ROLE' =3D> 'RESPONDER'
+    'PHP_SELF' =3D> '/admin/index.php'
+    'REQUEST_TIME_FLOAT' =3D> 1621306788.7814
+    'REQUEST_TIME' =3D> 1621306788
+]

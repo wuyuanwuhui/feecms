@@ -8,6 +8,7 @@
 
 namespace frontend\controllers;
 
+use common\helpers\StringHelper;
 use Yii;
 use frontend\controllers\helpers\Helper;
 use common\services\CommentServiceInterface;
@@ -70,6 +71,7 @@ class ArticleController extends Controller
             $cat = Yii::$app->getRequest()->getPathInfo();
         }
         $where = ['type' => Article::ARTICLE, 'status' => Article::ARTICLE_PUBLISHED];
+        $descendants = '';
         if ($cat != '' && $cat != 'index') {
             if ($cat == Yii::t('app', 'UnClassified')) {
                 $where['cid'] = 0;
@@ -90,6 +92,7 @@ class ArticleController extends Controller
         $query = Article::find()->with('category')->where($where);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize' => 5],
             'sort' => [
                 'defaultOrder' => [
                     'sort' => SORT_ASC,
@@ -98,13 +101,26 @@ class ArticleController extends Controller
                 ]
             ]
         ]);
+
         $template = "index";
         isset($category) && $category->template != "" && $template = $category->template;
+
+        // recommendArticles 、 news
+        $recommendArticles = $news = [];
+        if (in_array($cat, ['index', '', 'news'])) {
+            $recommendArticles = Article::find()->select(['id', 'title', 'thumb', 'game_icon'])->where(['flag_recommend' => 1])->asArray()->all();
+            $news = Article::find()->select(['id', 'title', 'updated_at'])->where(['cid' => 3])->asArray()->all();
+        }
+
         $data = array_merge([
+            'recommendArticles' => $recommendArticles,
+            'news' => $news,
+            // 'descendants' => $descendants,
             'dataProvider' => $dataProvider,
             'type' => ( !empty($cat) ? Yii::t('frontend', 'Category {cat} articles', ['cat'=>$cat]) : Yii::t('frontend', 'Latest Articles') ),
             'category' => isset($category) ? $category->name : "",
         ], Helper::getCommonInfos());
+
         return $this->render($template, $data);
     }
 
@@ -170,15 +186,18 @@ class ArticleController extends Controller
         $model->template != "" && $template = $model->template;
         /** @var AdServiceInterface $adService */
         $adService = Yii::$app->get(AdServiceInterface::ServiceName);
+
+        // var_dump($model);; die;
+
         return $this->render($template, [
             'model' => $model,
             'prev' => $prev,
             'next' => $next,
             'recommends' => $recommends,
-            'commentModel' => $commentModel,
-            'commentList' => $commentList,
-            'rightAd1' => $adService->getAdByName("sidebar_right_1"),
-            'rightAd2' => $adService->getAdByName("sidebar_right_2"),
+            //'commentModel' => $commentModel,
+            //'commentList' => $commentList,
+            //'rightAd1' => $adService->getAdByName("sidebar_right_1"),
+            //'rightAd2' => $adService->getAdByName("sidebar_right_2"),
         ]);
     }
 
@@ -321,6 +340,21 @@ class ArticleController extends Controller
         ]);
         Yii::$app->getResponse()->format = Response::FORMAT_XML;
         return $xml;
+    }
+
+    public function actionIndex2()
+    {
+        return $this->render('index');
+    }
+
+    public function actionList()
+    {
+        return $this->render('list');
+    }
+
+    public function actionDetail()
+    {
+        return $this->render('detail');
     }
 
 }

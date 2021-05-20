@@ -48,6 +48,8 @@ if ($parent_id != '') {
                 <div class="hr-line-dashed"></div>
                 <?= $form->field($model, 'name')->textInput(['maxlength' => 64]) ?>
                 <div class="hr-line-dashed"></div>
+                <?= $form->field($model, 'name_en')->textInput(['maxlength' => 64]) ?>
+                <div class="hr-line-dashed"></div>
                 <?= $form->field($model, 'alias')->textInput(['maxlength' => 64]) ?>
                 <div class="hr-line-dashed"></div>
                 <?= $form->field($model, 'sort')->textInput(['maxlength' => 512]) ?>
