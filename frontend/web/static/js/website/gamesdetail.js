@@ -122,12 +122,19 @@ var page = {
 						}
 					}
 				});// 游戏详情图片滚动end
-				
+
+				// img click
+				$('.spic_img').each(function(){
+					$(this).click(function(){
+
+					})
+				})
+
 			}
 			
 	}
 
-
+	// http://demo.jb51.net/js/2012/zoomimage/#implement
 
 	$(function(){
 		page.init();

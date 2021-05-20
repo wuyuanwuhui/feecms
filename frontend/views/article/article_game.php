@@ -1,8 +1,13 @@
 <?php
+
 /**
  * @var $this yii\web\View
  * @var $model
  */
+
+$this->title = $model->title;
+$categoryName = $model->category ? $model->category->name : Yii::t('app', 'UnClassified');
+$categoryAlias = $model->category ? $model->category->alias : Yii::t('app', 'UnClassified');
 
 ?>
 
@@ -11,9 +16,9 @@
     <div class="wrapper wrapper--narrow container" style="padding-top: 1rem">
         <header class="detail-head">
             <ul id="game_menu">
-                <li><a href="/games?dictionaryId=8">独立游戏</a></li>
-                <li>></li>
-                <li><a href="">无人星空</a></li>
+                <li><a href="<?= yii\helpers\Url::to(['article/index', 'cat' => $categoryAlias]) ?>"><?= $categoryName ?></a></li>
+                <li> > </li>
+                <li><a href=""><?=$model->title?></a></li>
             </ul>
         </header>
         <div class="content-block">
@@ -70,22 +75,20 @@
                     class="slider-content"
                     style="width: 100%; position: relative; overflow: hidden"
             >
-                <ul class="slider" style="position: relative; left: 0px">
+            <ul class="slider" id="slider" style="position: relative; left: 0px">
                     <li>
                         <div class="game-video">
                         </div>
                     </li>
                     <?php foreach ($model->images as $key => $val ) { ?>
 
-                        <li>
-                            <img
-                                    src="<?=$val?>"
+                        <li class="spic">
+                            <img class="spic_img"
+                                 src="<?=$val?>"
                             />
                         </li>
 
                     <?php } ?>
-
-
 
                 </ul>
             </div>
@@ -96,10 +99,12 @@
                 <i class="fa fa-angle-right fa-3x"></i>
             </a>
         </div>
+
+        </div>
         <div class="content-block detail-content-floor2">
             <div class="game-introduction">
                 <p>
-                    探索宇宙，几代人奋斗的目标！<br />征服星球，现在你就可以做到！<br />《无人星空》，一款高度自由的沙盒射击游戏，享受第一人称视角的真实体验，穿梭于各种奇异的星球之间，四处寻找奇特而稀有的外星资源，消灭所有的星球上的生物，让每个星球上都留下你的传说，拿起武器，操控飞船，开始一趟停不下来了的征服之旅。<br />▲人气端游《Morphite》国服代理移植，贴近端游操作手感，让经典再次展现<br />▲丰富多样的升级拓展功能，拿起你独一无二的武器，穿上量身定制的战甲，驾驶着最炫酷的飞船，开启不一样的星际旅程<br />▲深度定制的单人故事情节，超多的星球与星系，丰富的内容，让你没有停下来的理由&nbsp;&nbsp;<br />
+                    <?=$model->articleContent->content?>
                 </p>
                 <p><br /></p>
             </div>
@@ -110,5 +115,7 @@
 
 <?php
 use yii\helpers\Url;
+
 $this->registerJsFile(Url::base().'/static/js/website/gamesdetail.js', ['depends'=>['frontend\assets\AppNewAsset']]);
+
 ?>
