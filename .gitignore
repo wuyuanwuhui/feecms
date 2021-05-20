@@ -36,3 +36,6 @@ frontend/tests/acceptance.suite.yml
 api/tests/acceptance.suite.yml
 api/tests/functional.suite.yml
 install/install.lock
+/frontend/runtime
+/backend/runtime
+*.bak
