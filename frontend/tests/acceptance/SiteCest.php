@@ -27,7 +27,7 @@ class SiteCest
         $I->fillField("#loginform-username", "feep");
         $I->fillField("#loginform-password", "111111");
         $I->submitForm("button[name=login-button]", []);
-        $I->see("欢迎");
+        $I->see("Welcome");
         $I->see("退出登录");
     }
 

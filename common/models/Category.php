@@ -21,6 +21,7 @@ use yii\helpers\FileHelper;
  * @property integer $id
  * @property integer $parent_id
  * @property string $name
+ * @property string $name_en
  * @property string $alias
  * @property integer $sort
  * @property string $template
@@ -62,7 +63,7 @@ class Category extends \yii\db\ActiveRecord
             [['sort', 'parent_id', 'created_at', 'updated_at'], 'integer'],
             [['sort'], 'compare', 'compareValue' => 0, 'operator' => '>='],
             [['parent_id'], 'default', 'value' => 0],
-            [['name', 'alias', 'remark', 'template', 'article_template'], 'string', 'max' => 255],
+            [['name', 'name_en', 'alias', 'remark', 'template', 'article_template'], 'string', 'max' => 255],
             [['alias'],  'match', 'pattern' => '/^[a-zA-Z0-9_]+$/', 'message' => Yii::t('app', 'Must begin with alphabet and can only includes alphabet,_,and number')],
             [['name', 'alias'], 'required'],
             [['sort'], 'default', 'value' => 0]
@@ -78,6 +79,7 @@ class Category extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'parent_id' => Yii::t('app', 'Parent Category Id'),
             'name' => Yii::t('app', 'Name'),
+            'name_en' => Yii::t('app', 'Name En'),
             'alias' => Yii::t('app', 'Alias'),
             'sort' => Yii::t('app', 'Sort'),
             'template' => Yii::t('app', 'Category Template'),

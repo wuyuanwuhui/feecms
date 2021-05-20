@@ -1,10 +1,4 @@
 <?php
-/**
- * Author: lf
- * Blog: https://blog.feehi.com
- * Email: job@feehi.com
- * Created at: 2017-03-15 21:16
- */
 
 /**
  * @var $this yii\web\View
@@ -12,81 +6,94 @@
  * @var $type string
  * @var $category string
  * @var $indexBanners []
+ * @var $recommendArticles
+ * @var $news
  */
 
-/**
- * @var $rightAd1 \backend\models\form\AdForm
- * @var $rightAd2 \backend\models\form\AdForm
- * @var $headLinesArticles []\common\modesl\Article
- */
+$bannerCounts = count($indexBanners);
 
-use frontend\widgets\ArticleListView;
-use frontend\widgets\ScrollPicView;
-use common\widgets\JsBlock;
-use frontend\assets\IndexAsset;
-use yii\data\ArrayDataProvider;
-
-IndexAsset::register($this);
-$this->title = ( !empty($category) ? $category . " - " : "" ) . Yii::$app->feehi->website_title;
 ?>
-<div class="content-wrap">
-    <div class="content">
-        <div class="slick_bor">
-            <?= ScrollPicView::widget([
-                'banners' => $indexBanners,
-            ]) ?>
-            <div class="ws_shadow"></div>
-        </div>
-        <div class="daodu clr">
-            <?= ArticleListView::widget([
-                'dataProvider' => new ArrayDataProvider([
-                    'allModels' => $headLinesArticles,
-                ]),
-                'layout' => "<div class='tip'><h4>" . Yii::t('frontend', 'Well-chosen') . "</h4></div>
-                                <ul class=\"dd-list\">
-                                    {items}
-                                </ul>
-                             ",
-                'template' => "<figure class='dd-img'>
-                                        <a title='{title}' target='_blank' href='{article_url}'>
-                                            <img src='{img_url}' style='display: inline;' alt='{title}'>
-                                        </a>
-                                    </figure>
-                                    <div class='dd-content'>
-                                        <h2 class='dd-title'>
-                                            <a rel='bookmark' title='{title}' href='{article_url}'>{title}</a>
-                                        </h2>
-                                        <div class='dd-site xs-hidden'>{summary}</div>
-                                    </div>",
-                'itemOptions' => ['tag'=>'li'],
-                'thumbWidth' => 168,
-                'thumbHeight' => 112,
-            ]) ?>
-        </div>
 
-        <header class="archive-header"><h1><?=$type?></h1></header>
-        <?= ArticleListView::widget([
-            'dataProvider' => $dataProvider,
-        ]) ?>
+
+<body id="main">
+<div id="main-banner" class="carousel slide" data-ride="carousel">
+    <!---->
+
+    <ul class="carousel-indicators">
+        <?php
+            for($i=0; $i<$bannerCounts; $i++) {
+                $active = ($i == 0) ? "active" : "";
+        ?>
+    <li data-target="#main-banner" data-slide-to="<?=$i?>" class="<?=$active?>"></li>
+        <?php } ?>
+
+    </ul>
+    <!-- -->
+    <div class="carousel-inner">
+        <?php foreach ($indexBanners as $key => $val ) { ?>
+
+        <div class="carousel-item <?=($key === 0) ? 'active' : ''?>">
+            <a href="<?=$val['link']?>">
+                <img src="<?=$val['img']?>" title="<?=$val['tips'] ?? ''?>" />
+            </a>
+        </div>
+        <?php } ?>
+    </div>
+    <!--  -->
+    <a class="carousel-control-prev" href="#main-banner" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#main-banner" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 content-floor1">
+                <h4>
+                    <span class="left-icon"></span>
+                    <span class="mtitle">推荐</span> 游戏
+                    <span class="subtitle">RECOMMEND</span>
+                    <a class="more" href="/index.php?r=article&cat=games"
+                    >更多<i class="fa fa-chevron-circle-right"></i
+                        ></a>
+                </h4>
+                <div class="recommend-games">
+                    <?php foreach ($recommendArticles as $key => $val ) { ?>
+
+                        <div>
+                            <a class="games__item  effect" href="/index.php?r=article/view&id=<?=$val['id']?>">
+                                <img  src="<?=$val['game_icon']?>"  title="<?=$val['title']?>"  class="games__photo"  />
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+
+            <div class="col-xs-12 content-floor2">
+                <h4>
+                    <span class="left-icon"></span>
+                    <span class="mtitle">新闻</span> 动态
+                    <span class="subtitle">NEWS</span>
+                    <a class="more" href="/index.php?r=article&cat=news"
+                    >更多<i class="fa fa-chevron-circle-right"></i
+                        ></a>
+                </h4>
+
+                <ul class="news">
+                    <?php foreach ($news as $key => $val ) { ?>
+                    <li>
+                        <a href="/index.php?r=article/view&id=<?=$val['id']?>">
+                            <span><?=$val['title']?></span>
+                            <span class="item-time"><?=date('Y-m-d', $val['updated_at'])?></span>
+                        </a>
+                    </li>
+                    <?php } ?>
+
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
-<?= $this->render('_sidebar', [
-        'rightAd1' => $rightAd1,
-        'rightAd2' => $rightAd2,
-]) ?>
-<?php JsBlock::begin() ?>
-<script>
-    $(function () {
-        var mx = document.body.clientWidth;
-        $(".slick").responsiveSlides({
-            auto: true,
-            pager: true,
-            nav: true,
-            speed: 700,
-            timeout: 7000,
-            maxwidth: mx,
-            namespace: "centered-btns"
-        });
-    });
-</script>
-<?php JsBlock::end() ?>
+</body>

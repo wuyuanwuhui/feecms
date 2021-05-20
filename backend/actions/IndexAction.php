@@ -48,6 +48,7 @@ class IndexAction extends \yii\base\Action
      */
     public function run()
     {
+
         //according assigned HTTP Method and param name to get value. will be passed to $this->>data closure.Often there is no need to get value on index, so default value is null.
         $primaryKeys = Helper::getPrimaryKeys($this->primaryKeyIdentity, $this->primaryKeyFromMethod);
 

@@ -169,6 +169,44 @@ $this->registerCss("
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <div class="col-sm-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><?= Yii::t('app', 'Latest Comments') ?></h5>
+                <div class="ibox-tools">
+                    <a class="openContab" title="<?=Yii::t('app', 'Comments')?>" target="_blank" href="<?=Url::to(['comment/index'])?>"><?= Yii::t('app', 'More')?></a>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <div class="feed-activity-list">
+                        <?php
+                        foreach ($comments as $comment) {
+                            ?>
+                            <div class="feed-element">
+                                <a class="pull-left"><img alt="image" class="img-circle" src="<?= md5($comment->email) ?>?s=50"></a>
+                                <div class="media-body ">
+                                    <small class="pull-right"><?= Yii::$app->getFormatter()->asRelativeTime($comment->created_at) ?></small>
+                                    <strong><?= $comment->nickname ?></strong>
+                                    <br>
+                                    <small class="text-muted"><?= Yii::$app->getFormatter()->asDate($comment->created_at) ?> <?=Yii::t('app', 'at')?> <a class="openContab" data-index="0" title="<?=yii::t('app',"Articles")?>" href="<?= isset($comment->article->id) ? Url::toRoute(['article/view-layer', 'id'=>$comment->article->id]) : '#' ?>"><?= isset($comment->article->title) ? $comment->article->title : '' ?></a></small>
+                                    <div data-index="0" class="openContab well" href="<?=Url::toRoute(['comment/index']) ?>" title="<?= Yii::t('app', 'Comments')?>" style="cursor: pointer">
+                                        <?= $comment->content ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+>>>>>>> cb47a9d0114308a938bad690cc353b4c0043d560
 </div>
 <?php JsBlock::begin() ?>
 

@@ -6,3 +6,4 @@ robots.txt
 /api/index.php
 /api/index-test.php
 apitest
+/assets/*

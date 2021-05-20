@@ -28,6 +28,10 @@ use yii\web\UploadedFile;
  * @property string $sub_title
  * @property string $summary
  * @property string $thumb
+ * @property string $game_icon
+ * @property string $game_version
+ * @property string $game_size
+ * @property integer $down_counts
  * @property string $seo_title
  * @property string $seo_keywords
  * @property string $seo_description
@@ -103,7 +107,7 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cid', 'type', 'status', 'sort', 'author_id', 'can_comment', 'visibility'], 'integer'],
+            [['cid', 'type', 'status', 'sort', 'author_id', 'can_comment', 'visibility', 'down_counts'], 'integer'],
             [['cid', 'sort', 'author_id'], 'compare', 'compareValue' => 0, 'operator' => '>='],
             [['title', 'status'], 'required'],
             [['can_comment'], 'default', 'value' => Constants::YesNo_Yes],
@@ -116,7 +120,9 @@ class Article extends \yii\db\ActiveRecord
                     'title',
                     'sub_title',
                     'summary',
+                    'game_version',
                     'seo_title',
+                    'game_size',
                     'seo_keywords',
                     'seo_description',
                     'author_name',
@@ -162,6 +168,10 @@ class Article extends \yii\db\ActiveRecord
                 'sub_title',
                 'summary',
                 'thumb',
+                'game_icon',
+                'game_version',
+                'game_size',
+                'down_counts',
                 'seo_title',
                 'seo_keywords',
                 'seo_description',
@@ -219,6 +229,11 @@ class Article extends \yii\db\ActiveRecord
             'sub_title' => Yii::t('app', 'Sub Title'),
             'summary' => Yii::t('app', 'Summary'),
             'thumb' => Yii::t('app', 'Thumb'),
+            'game_icon' => Yii::t('app', 'Game Icon'),
+            'game_version' => Yii::t('app', 'Game Version'),
+            'game_size' => Yii::t('app', 'Game Size'),
+            'down_counts' => Yii::t('app', 'Down Counts'),
+
             'seo_title' => Yii::t('app', 'Seo Title'),
             'seo_keywords' => Yii::t('app', 'Seo Keyword'),
             'seo_description' => Yii::t('app', 'Seo Description'),
@@ -298,6 +313,7 @@ class Article extends \yii\db\ActiveRecord
     {
         $insert = $this->getIsNewRecord();
         Util::handleModelSingleFileUpload($this, 'thumb', $insert, '@thumb', ['thumbSizes'=>self::$thumbSizes]);
+        Util::handleModelSingleFileUpload($this, 'game_icon', $insert, '@thumb');
         $this->seo_keywords = str_replace('，', ',', $this->seo_keywords);
         if ($insert) {
             $this->author_id = Yii::$app->getUser()->getIdentity()->getId();
@@ -337,6 +353,9 @@ class Article extends \yii\db\ActiveRecord
         if( !empty( $this->thumb ) ){
             Util::deleteThumbnails(Yii::getAlias('@frontend/web') . $this->thumb, self::$thumbSizes, true);
         }
+        if( !empty( $this->game_icon ) ){
+            Util::deleteThumbnails(Yii::getAlias('@frontend/web') . $this->game_icon, [], true);
+        }
         Comment::deleteAll(['aid' => $this->id]);
         return parent::beforeDelete();
     }
@@ -368,6 +387,9 @@ class Article extends \yii\db\ActiveRecord
     {
         if ($this->thumb !== "0") {//为0表示需要删除图片，Util::handleModelSingleFileUpload()会有判断删除图片
             $this->thumb = UploadedFile::getInstance($this, "thumb");
+        }
+        if ($this->game_icon !== "0") {//为0表示需要删除图片，Util::handleModelSingleFileUpload()会有判断删除图片
+            $this->thumb = UploadedFile::getInstance($this, "game_icon");
         }
         return parent::beforeValidate();
     }
