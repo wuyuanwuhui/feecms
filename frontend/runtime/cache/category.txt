@@ -1,1 +1,0 @@
-{"\/games\/mishitaotuo\/<cat:mishitaotuo>":"article\/index","\/games\/juejing\/<cat:juejing>":"article\/index","\/games\/xiuxian\/<cat:xiuxian>":"article\/index","\/games\/duli\/<cat:duli>":"article\/index","\/games\/<cat:games>":"article\/index","\/news\/<cat:news>":"article\/index"}
