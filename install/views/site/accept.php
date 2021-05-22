@@ -14,7 +14,7 @@ $this->title = Yii::t('install', 'FeehiCMS license agreement');
     <div class="main">
         <pre class="agreement">Feehi CMS软件使用协议
 
-版权所有 ©2015-<?= date('Y') ?>,Feehi CMS开源社区
+版权所有 ©2015-<?= date('Y') ?>
 
 感谢您选择Feehi CMS内容管理框架, 希望我们的产品能够帮您把网站发展的更快、更好、更强！
 
