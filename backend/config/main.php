@@ -66,8 +66,8 @@ return [
             'csrfParam' =>'_csrf_backend',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => false,//true 美化路由(注:需要配合web服务器配置伪静态，详见http://doc.feehi.com/install.html), false 不美化路由
-            'showScriptName' => true,//隐藏index.php
+            'enablePrettyUrl' => true,//true 美化路由(注:需要配合web服务器配置伪静态，详见http://doc.feehi.com/install.html), false 不美化路由
+            'showScriptName' => false,//隐藏index.php
             'enableStrictParsing' => false,
         ],
         'i18n' => [
