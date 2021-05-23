@@ -109,7 +109,7 @@ class ArticleController extends Controller
         $recommendArticles = $news = [];
         if (in_array($cat, ['index', '', 'news'])) {
             $recommendArticles = Article::find()->select(['id', 'title', 'thumb', 'game_icon'])->where(['flag_recommend' => 1])->asArray()->all();
-            $news = Article::find()->select(['id', 'title', 'updated_at'])->where(['cid' => 3])->asArray()->all();
+            $news = Article::find()->select(['id', 'title', 'updated_at'])->where(['alias' => 'news'])->asArray()->all();
         }
 
         $data = array_merge([
