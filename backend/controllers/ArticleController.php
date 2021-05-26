@@ -113,4 +113,36 @@ class ArticleController extends \yii\web\Controller
         ];
     }
 
+    public $enableCsrfValidation = false;
+
+    public function actionTest()
+    {
+        if (Yii::$app->getRequest()->isPost) {
+            print_r($_POST);
+            print_r($_FILES);
+
+            die;
+        }
+
+
+        return $this->renderPartial('test');
+    }
+
+    public function actionUpload()
+    {
+        if (Yii::$app->getRequest()->isPost) {
+            print_r($_POST);
+            print_r($_FILES);
+
+            if ($_FILES['ImgeData']['tmp_name']) {
+                move_uploaded_file($_FILES['ImgeData']['tmp_name'], dirname(__FILE__) . '/11111.webp');
+            }
+
+            die;
+        }
+        exit('nothing');
+    }
+
+
+
 }
