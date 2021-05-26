@@ -143,6 +143,36 @@ class ArticleController extends \yii\web\Controller
         exit('nothing');
     }
 
+    // http://www.manongjc.com/article/26865.html
+    function toWebp($base_img)
+    {
+        $base_img = str_replace('data:image/webp;base64,', '', $base_img);
 
+        //  设置文件路径和文件前缀名称
+
+        $path = "./";
+
+        $prefix='nx_';
+
+        $output_file = $prefix.time().rand(100,999).'.jpg';
+
+        $path = $path.$output_file;
+
+        //  创建将数据流文件写入我们创建的文件内容中
+
+        $ifp = fopen( $path, "wb" );
+
+        fwrite( $ifp, base64_decode( $base_img) );
+
+        fclose( $ifp );
+
+        // 第二种方式
+
+        // file_put_contents($path, base64_decode($base_img));
+
+        // 输出文件
+
+        print_r($output_file);
+    }
 
 }
